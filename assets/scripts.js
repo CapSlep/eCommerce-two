@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	if (localStorage.getItem("__is_checkout") != null) {
+	if (getCookie("__is_checkout") != null) {
 		document.getElementById("pageMain").setAttribute("style", "display: none");
 		openCheckout();
 		checkoutInit();
@@ -245,6 +245,10 @@ $(document).ready(function () {
 	buyButtons.forEach(buyButton => {
 		buyButton.addEventListener('click', () => {
 			const selectedElement = document.querySelector('.parameters-list__item.active');
+			if (selectedElement == null) {
+				alert("¡Seleccione el color deseado para continuar!");
+				return;
+			}
 			// console.log(selectedElement);
 			lsSelectProduct(selectedElement.getAttribute("data-id"));
 			document.getElementById("pageMain").setAttribute("style", "display: none");

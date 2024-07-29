@@ -393,18 +393,18 @@ const notificationsInit = () => {
       }, 1400);
     }, 5e3);
   };
-  if (localStorage.getItem("__notification_1") == null) {
+  if (getCookie("__notification_1") == null) {
     setTimeout(() => {
       showNotify(notifications[0]);
       hideNotify();
-      localStorage.setItem("__notification_1", "true");
+      setCookie("__notification_1", "true");
     }, 15e3);
   }
-  if (localStorage.getItem("__notification_2") == null) {
+  if (getCookie("__notification_2") == null) {
     setTimeout(() => {
       showNotify(notifications[1]);
       hideNotify();
-      localStorage.setItem("__notification_2", "true");
+      setCookie("__notification_2", "true");
     }, 25e3);
   }
 };
@@ -458,7 +458,7 @@ const mainInit = () => {
 };
 
 setTimeout(() => {
-  if (localStorage.getItem("__is_checkout") != null) {
+  if (getCookie("__is_checkout") != null) {
     openCheckout();
     checkoutInit();
   } else {
